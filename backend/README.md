@@ -1,12 +1,26 @@
 ## Vulnerability Analysis Scope
 
-Audit-Shield uses public vulnerability databases to identify
-known issues in third-party dependencies.
+Audit-Shield uses public vulnerability databases (such as OSV)
+to identify known security issues affecting third-party dependencies
+in the Python ecosystem.
 
-This analysis is:
+The analysis performed by Audit-Shield is:
 
 - informational
 - non-intrusive
-- non-offensive
+- read-only
+- focused on dependency risk awareness
 
-Audit-Shield does not perform exploitation or active security testing.
+Vulnerabilities are classified using publicly available severity
+metrics (e.g. CVSS scores) and grouped into qualitative risk levels
+such as LOW, MEDIUM, HIGH, and CRITICAL.
+
+Audit-Shield does not perform:
+
+- exploitation
+- penetration testing
+- active scanning
+- runtime attack simulation
+
+The goal of this project is to help developers and teams
+better understand and prioritize dependency-related security risks.
