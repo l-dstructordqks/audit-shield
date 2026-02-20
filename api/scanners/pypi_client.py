@@ -55,4 +55,3 @@ def is_outdated(current: str | None, latest: str ) -> bool:
     except (version.InvalidVersion, TypeError):
         return False
 
-print(get_package_info('requests'))
