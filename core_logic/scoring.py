@@ -13,7 +13,7 @@ def calculate_audit_score(packages: list[dict], network_score: float = 0.0) -> d
 
     # los packaes llean del requirements_parser
     V_raw = mean([_score_vulns(p.get('vulnerabilities')) for p in packages])
-    M_raw = mean([_score_maintenance(p.get('days'), p.get('is_outdated')) for p in packages])
+    M_raw = mean([_score_maintenance(p.get('days_since_update'), p.get('is_outdated')) for p in packages])
     N_raw = network_score  # float 0-100, viene de net_analyzer
 
     V = _normalize(V_raw, 100)
