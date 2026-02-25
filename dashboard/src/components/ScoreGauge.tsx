@@ -11,10 +11,10 @@ interface ScoreGaugeProps {
 }
 
 export const ScoreGauge: React.FC<ScoreGaugeProps> = ({ score, level, breakdown }) => {
-    const data = [{ name: 'Score', value: breakdown.V, fill: getColorFromNumber(breakdown.V) }, { name: 'Score', value: breakdown.M, fill: getColorFromNumber(breakdown.M) }, { name: 'Score', value: breakdown.N, fill: getColorFromNumber(breakdown.N) }];
+    const data = [{ name: 'V', value: breakdown.V, fill: getColorFromNumber(breakdown.V) }, { name: 'M', value: breakdown.M, fill: getColorFromNumber(breakdown.M) }, { name: 'N', value: breakdown.N, fill: getColorFromNumber(breakdown.N) }];
 
     return (
-        <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow">
+        <div className="flex flex-col sm:flex-row items-center justify-center p-4 bg-white rounded-lg shadow">
             <div style={{ width: '200px', height: '200px' }}>
                 <ResponsiveContainer width="100%" height="100%">
                     <RadialBarChart 
@@ -50,8 +50,8 @@ export const ScoreGauge: React.FC<ScoreGaugeProps> = ({ score, level, breakdown 
             </div>
             
             <div className="text-center">
-                <h3 className="text-lg font-semibold" style={{ color: getColor(level) }}>
-                    Level: {getRiskFromLevel(level)}
+                <h3 className="text-lg font-semibold text-gray-400">
+                    Risk Level: <span style={{ color: getColor(level) }}>{getRiskFromLevel(level)}</span>
                 </h3>
                 <BreakdownBadges breakdown={breakdown} />
             </div>
