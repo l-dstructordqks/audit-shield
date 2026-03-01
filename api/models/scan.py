@@ -26,3 +26,45 @@ class ScanResult(BaseModel):
 
 class TextScanRequest(BaseModel):
     content: str
+
+#network classes
+
+class AnomalyEvent(BaseModel):
+    timestamp: str
+    type: str        # 'HIGH_LATENCY' | 'HIGH_BYTES'
+    value: float
+    threshold: float
+
+class TimePoint(BaseModel):
+    timestamp: str
+    avg_latency: float
+    max_latency: float
+    total_bytes: int
+    max_bytes: int
+    event_count: int
+    latency_anomaly_count: int
+    bytes_anomaly_count: int
+
+class EndpointSummary(BaseModel):
+    ip: str
+    protocol: str
+    total_bytes: int
+    request_count: int
+    is_suspicious: bool
+
+class Baseline(BaseModel):
+    latency_mean: float
+    latency_std: float
+    bytes_mean: float
+    bytes_std: float
+    events_per_min: float
+    latency_threshold: float
+    bytes_threshold: float
+
+class TrafficAnalysisResult(BaseModel):
+    baseline: Baseline
+    anomalies: list[AnomalyEvent]
+    timeseries: list[TimePoint]
+    endpoints: list[EndpointSummary]
+    network_risk_score: float      # el N del Audit-Score
+    total_events: int

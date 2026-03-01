@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from api.routes import router as sca_router
+from api.routes_network import router as network_router
 
 app = FastAPI (
     title="Audit-Shield",
@@ -13,6 +15,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(sca_router)
+app.include_router(network_router)
 
 @app.get('/health')
 def health_check():

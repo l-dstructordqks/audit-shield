@@ -30,3 +30,46 @@ export interface TrafficResult {
 export interface TextScanRequest {
     content: string;
 }
+
+// network analysis
+
+export interface AnomalyEvent {
+    timestamp: string;
+    type: 'HIGH_LATENCY' | 'HIGH_BYTES';
+    value: number;
+    threshold: number;
+}
+export interface TimePoint {
+    timestamp: string;
+    avg_latency: number;
+    max_latency: number;
+    total_bytes: number;
+    max_bytes: number;
+    event_count: number;
+    latency_anomaly_count: number;
+    bytes_anomaly_count: number;
+}
+export interface EndpointSummary {
+    ip: string;
+    protocol: string;
+    total_bytes: number;
+    request_count: number;
+    is_suspicious: number;
+}
+export interface Baseline {
+    latency_mean: number;
+    latency_std: number;
+    bytes_mean: number;
+    bytes_std: number;
+    events_per_min: number;
+    latency_threshold: number;
+    bytes_threshold: number;
+}
+export interface TrafficAnalysisResult{
+    baseline: Baseline;
+    anomalies: AnomalyEvent[];
+    timeseries: TimePoint[];
+    endpoints: EndpointSummary[];
+    network_risk_score: number;      // el N del Audit-Score
+    total_events: number;
+}

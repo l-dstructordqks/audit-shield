@@ -47,3 +47,14 @@ export const analyzeTraffic = async(file: File): Promise<TrafficResult> => {
     const response = await api.post('/network/analyze', formData);
     return response.data;
 }
+
+export const scanFull = async (
+    requirements: File,
+    traffic: File
+): Promise<ScanResult> => {
+    const formData = new FormData();
+    formData.append('requirements', requirements);
+    formData.append('traffic', traffic);
+    const response = await api.post('/scan/full', formData);
+    return response.data;
+};

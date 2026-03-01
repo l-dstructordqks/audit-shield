@@ -11,10 +11,17 @@ SEVERITY_WEIGHTS = {
 
 def calculate_audit_score(packages: list[dict], network_score: float = 0.0) -> dict:
 
+    if not packages:
+        return {
+            'score': 0,
+            'level': score_to_level(0),
+            'breakdown': {'V': 0, 'M': 0, 'N': network_score}
+        }
+
     # los packaes llean del requirements_parser
     V_raw = mean([_score_vulns(p.get('vulnerabilities')) for p in packages])
     M_raw = mean([_score_maintenance(p.get('days_since_update'), p.get('is_outdated')) for p in packages])
-    N_raw = network_score  # float 0-100, viene de net_analyzer
+    N_raw = network_score or 0.0 # float 0-100, viene de net_analyzer
 
     V = _normalize(V_raw, 100)
     M = _normalize(M_raw, 70)
