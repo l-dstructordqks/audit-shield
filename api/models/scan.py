@@ -47,6 +47,7 @@ class TimePoint(BaseModel):
 
 class EndpointSummary(BaseModel):
     ip: str
+    protocol: str
     total_bytes: int
     request_count: int
     is_suspicious: bool

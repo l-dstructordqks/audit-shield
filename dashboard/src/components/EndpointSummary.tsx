@@ -27,8 +27,9 @@ export const EndpointSummaryTable: React.FC<EndpointSummaryProps> = ({ endpoints
         <thead className='font-light'>
           <tr className='text-base' >
             <th className='font-medium border-r border-gray-400 px-4 py-2'>Ip</th>
+            <th className='font-medium border-r border-gray-400 px-4 py-2'>Protocol</th>
             <th className='font-medium border-r border-gray-400 px-4 py-2'>Total Bytes</th>
-            <th className='font-medium border-r border-gray-400 px-4 py-2'>Request Count</th>
+            <th className='font-medium border-r border-gray-400 px-4 py-2'>Requests</th>
             <th className='font-medium border-r border-gray-400 px-4 py-2'>Is Suspicious</th>
           </tr>
         </thead>
@@ -37,6 +38,7 @@ export const EndpointSummaryTable: React.FC<EndpointSummaryProps> = ({ endpoints
             return (
             <tr className='text-sm border-b'>
               <td className='px-2 py-1.5 border-t border-gray-400'>{e.ip}</td>
+              <td className='px-2 py-1.5 border-t border-gray-400'>{e.protocol}</td>
               <td className='px-2 py-1.5 border-t border-gray-400'>{e.total_bytes}</td>
               <td className='px-2 py-1.5 border-t border-gray-400'>{e.request_count}</td>
               <td className='px-2 py-1.5 border-t border-gray-400'>

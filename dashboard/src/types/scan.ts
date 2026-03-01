@@ -51,6 +51,7 @@ export interface TimePoint {
 }
 export interface EndpointSummary {
     ip: string;
+    protocol: string;
     total_bytes: number;
     request_count: number;
     is_suspicious: number;

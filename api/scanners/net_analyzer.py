@@ -121,7 +121,7 @@ def get_timeseries(df: pd.DataFrame, baseline: dict, interval: str = '1min') -> 
 def analyze_endpoints(df: pd.DataFrame) -> list[dict]:
     #groups the traffic by destination IP and compares with the known CDN and returns [{ip, total_bytes, request_count, is_suspicious}]
 
-    grouped = df.groupby('dst_ip').agg(
+    grouped = df.groupby('dst_ip', 'protocol').agg(
         total_bytes=('bytes', 'sum'),
         request_count=('bytes', 'count'),
     ).reset_index()
@@ -134,6 +134,7 @@ def analyze_endpoints(df: pd.DataFrame) -> list[dict]:
 
         result.append({
             'ip': ip,
+            'protocol': row['protocol'],
             'total_bytes': int(row['total_bytes']),
             'request_count': int(row['request_count']),
             'is_suspicious': is_suspicious,
