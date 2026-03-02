@@ -77,17 +77,17 @@ const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
 
   return (
     <div className="bg-white rounded-lg shadow-sm font-ptsans p-3 min-w-45">
-      <p className="text-gray-900 text-xs mb-2 tracking-[0.05em]">
+      <p className="text-gray-500 text-[12px] font-bold mb-2 tracking-[0.05em]">
         {label}
       </p>
       {payload.map((entry) =>
       
         entry.value > 0 ? (
           <div key={entry.name} className="flex justify-between items-center gap-6 mb-1">
-            <span className="text-gray-900 font-ptsans tracking-[0.04em] text-xs" style={{color: entry.fill}}>
+            <span className="text-xs text-gray-600 tracking-[0.04em]" style={{color: entry.fill}}>
               {SEVERITY_LABELS[entry.name] ?? entry.name}
             </span>
-            <span className="text-gray-900 text-xs">
+            <span className="text-gray-900 text-[11px] font-bold">
               {entry.value}
             </span>
             
@@ -95,7 +95,7 @@ const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
         ) : null
       )}
       <div className="flex justify-between mt-2 pt-2 font-medium border-t border-solid border-t-gray-600">
-        <span className="text-gray-900 text-xs">Total CVEs</span>
+        <span className="text-xs text-gray-600">Total CVEs</span>
         <span className="text-gray-900 text-xs font-semibold">{total}</span>
       </div>
     </div>
@@ -108,7 +108,7 @@ const CustomLegend = () => (
     {Object.entries(SEVERITY_LABELS).map(([key, severity]) => (
       <div key={key} className="flex items-center font-ptsans text-gray-900 tracking-[0.04em] font-medium gap-1.5">
         <div style={{ width: 10, height: 10, borderRadius: 2, background: getColorFromSeverity(severity) }} />
-        <span className="text-xs">
+        <span className="text-xs font-medium text-gray-700 tracking-wide">
           {SEVERITY_LABELS[key]}
         </span>
       </div>
@@ -145,7 +145,7 @@ export const RiskDistributionChart = ({ packages }: RiskDistributionChartProps) 
     }}>
       {/* Header */}
       <div className="flex justify-between font-ptsans text-gray-900 align-baseline mb-5 pl-2">
-        <h3 className="font-semibold text-sm tracking-[0.08em] uppercase px-2">
+        <h3 className="font-semibold text-sm tracking-[0.08em] px-2">
           CVE Distribution
         </h3>
         <span className="text-sm">
