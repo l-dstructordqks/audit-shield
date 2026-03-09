@@ -23,8 +23,8 @@ export const PackagesContainer: React.FC = () => {
     });
 
   if (data?.packages && data?.timeseries) {
-    console.log(data);
-    console.log('lalalla');
+    //console.log(data);
+    //console.log('lalalla');
     
 
     const filteredData = useMemo(() => {
@@ -62,7 +62,7 @@ export const PackagesContainer: React.FC = () => {
     </div>
     );
   } else if (data?.packages) {
-    console.log(data);
+    //console.log(data);
     
 
     const filteredData = useMemo(() => {
@@ -98,7 +98,7 @@ export const PackagesContainer: React.FC = () => {
       </div>
     );
   } else if (data?.timeseries) {
-    console.log('lalalla net');
+    //console.log('lalalla net');
     return (
       <div className='flex flex-col gap-2'>
         <h2

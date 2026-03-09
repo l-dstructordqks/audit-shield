@@ -314,15 +314,15 @@ export const TrafficTwinChart: React.FC<TrafficTwinChartProps> = ({ baseline, ti
     >
       Traffic Twin <span className="text-red-500"></span>
     </h2>
-  <div className="flex flex-col bg-white rounded-lg shadow font-ptsans min-w-150 px-4 pb-4 pt-6 h-full">
+  <div className="flex flex-col bg-white rounded-lg shadow font-ptsans min-w-150 px-4 pb-4 pt-6 h-full items-center">
     <div className="flex justify-between font-ptsans text-gray-900 align-baseline mb-5 pl-2">
       <h3 className="font-semibold text-sm tracking-[0.08em] uppercasepx-2">
         Latency Behavior Profile
       </h3>
     </div>
-    <ResponsiveContainer width="100%" height={260}>
+    <ResponsiveContainer width="100%" height={260} >
       <ComposedChart
-        style={{ maxWidth: '80vw', maxHeight: '70vh', aspectRatio: 1.618 }} syncId="anyId"
+        style={{maxHeight: '70vh', aspectRatio: 1.618}} syncId="anyId"
         data={Latency}
       >
         <CartesianGrid stroke="#f5f5f5" />
@@ -364,7 +364,7 @@ export const TrafficTwinChart: React.FC<TrafficTwinChartProps> = ({ baseline, ti
     </div>
     <ResponsiveContainer width="100%" height={260}>
       <ComposedChart
-        style={{ maxWidth: '80vw', maxHeight: '70vh', aspectRatio: 1.618 }} syncId="anyId"
+        style={{ maxHeight: '70vh', aspectRatio: 1.618 }} syncId="anyId"
         data={Bytes}
       >
         <CartesianGrid stroke="#f5f5f5" />

@@ -21,12 +21,6 @@ export interface ScanResult {
     audit_level: 'GREEN' | 'YELLOW' | 'RED';          // 'GREEN' | 'YELLOW' | 'RED'
     breakdown: Record<string, number>;           
 }
-export interface TrafficResult {
-    packages: PackageResult[];
-    audit_score: number;        // 0-100
-    audit_level: 'GREEN' | 'YELLOW' | 'RED';          // 'GREEN' | 'YELLOW' | 'RED'
-    breakdown: Record<string, number>;           
-}
 export interface TextScanRequest {
     content: string;
 }

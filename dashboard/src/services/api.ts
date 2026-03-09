@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { type ScanResult, type PackageResult, type TextScanRequest, type TrafficResult, type TrafficAnalysisResult, type ScanFullResult } from '../types';
+import { type ScanResult, type PackageResult, type TextScanRequest, type TrafficAnalysisResult, type ScanFullResult } from '../types';
 
 // devleopment and production enviroment from .env file
 const BASE_URL: string = import.meta.env.MODE === "production" 
@@ -55,8 +55,6 @@ export const scanFull = async (
     const formData = new FormData();
     formData.append('requirements', requirements);
     formData.append('traffic', traffic);
-    console.log(requirements, traffic);
     const response = await api.post('/scan/full', formData);
-    console.log(response.data.timeseries)
     return response.data;
 };
