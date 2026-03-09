@@ -46,6 +46,7 @@ class TimePoint(BaseModel):
     bytes_anomaly_count: int
 
 class EndpointSummary(BaseModel):
+    timestamp: str
     ip: str
     protocol: str
     total_bytes: int

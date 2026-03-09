@@ -2,9 +2,9 @@ from statistics import mean
 from packaging import version
 
 SEVERITY_WEIGHTS = {
-    "CRITICAL": 25,
-    "HIGH":     10,
-    "MEDIUM":    5,
+    "CRITICAL": 75,
+    "HIGH":     25,
+    "MEDIUM":    8,
     "LOW":       2,
     "UNKNOWN":   0,
 }

@@ -121,9 +121,10 @@ def get_timeseries(df: pd.DataFrame, baseline: dict, interval: str = '1min') -> 
 def analyze_endpoints(df: pd.DataFrame) -> list[dict]:
     #groups the traffic by destination IP and compares with the known CDN and returns [{ip, total_bytes, request_count, is_suspicious}]
 
-    grouped = df.groupby('dst_ip', 'protocol').agg(
+    grouped = df.groupby(['dst_ip', 'protocol']).agg(
         total_bytes=('bytes', 'sum'),
         request_count=('bytes', 'count'),
+        timestamp=('timestamp', 'max'),
     ).reset_index()
 
     result = []
@@ -133,6 +134,7 @@ def analyze_endpoints(df: pd.DataFrame) -> list[dict]:
         is_suspicious = not any(ip.startswith(prefix) for prefix in KNOWN_CDN_PREFIXES)
 
         result.append({
+            'timestamp': str(row['timestamp']),
             'ip': ip,
             'protocol': row['protocol'],
             'total_bytes': int(row['total_bytes']),
@@ -141,7 +143,7 @@ def analyze_endpoints(df: pd.DataFrame) -> list[dict]:
         })
 
     # Ordena por bytes descendente — los endpoints más activos primero
-    return sorted(result, key=lambda x: x['total_bytes'], reverse=True)
+    return sorted(result, key=lambda x: x['timestamp'], reverse=False)
 
 def get_network_risk_score(anomalies: list[dict], total: int) -> float:
 
