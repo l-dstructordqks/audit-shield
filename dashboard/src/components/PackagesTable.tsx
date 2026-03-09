@@ -32,9 +32,9 @@ export const PackagesTable: React.FC<TableProps> = ({ query, packages }) => {
         <tbody>
           {packages.filter(p=>
             p.name.toLowerCase().includes(query)
-          ).map((p) => {
+          ).map((p, index) => {
             return (
-            <tr className='text-sm border-b'>
+            <tr key={index} className='text-sm border-b'>
               <td className='px-1 py-1.5 border-t border-gray-400'>{p.name}</td>
               <td className='px-2 py-1.5 border-t border-gray-400'>{p.current_version}</td>
               <td className='px-2 py-1.5 border-t border-gray-400'>{p.latest_version}</td>
@@ -50,8 +50,8 @@ export const PackagesTable: React.FC<TableProps> = ({ query, packages }) => {
               
               <td className='px-2 py-1.5 border-t border-gray-400 min-w-max'>
                 <div className='flex flex-col gap-1'>
-                {p.vulnerabilities.map((vuln) => {return (
-                <div className='flex gap-1 justify-between'>
+                {p.vulnerabilities.map((vuln, index) => {return (
+                <div key={index} className='flex gap-1 justify-between'>
                   <p className='whitespace-nowrap'>{vuln.id}</p>
                   <EducationalTooltip
                     type="cve"

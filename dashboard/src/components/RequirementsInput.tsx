@@ -55,7 +55,7 @@ const handleCsvChange = (e: ChangeEvent<HTMLInputElement>) => {
           //await scanOnlyTxt(txtFile);
         } 
         else if (!txtFile && csvFile) {
-          console.log("Solo CSV");
+          //console.log("Solo CSV");
           const trafficResult = await analyzeTraffic(csvFile);
           navigate('/RequirementsAnalysis', {
             state: { data: trafficResult }
@@ -64,9 +64,9 @@ const handleCsvChange = (e: ChangeEvent<HTMLInputElement>) => {
           //await scanOnlyCsv(csvFile);
         } 
         else if (txtFile && csvFile) {
-          console.log("Ambos archivos");
+          //console.log("Ambos archivos");
           const fullResult = await scanFull(txtFile, csvFile);
-          console.log(fullResult);
+          //console.log(fullResult);
           navigate('/RequirementsAnalysis', {
             state: { data: fullResult }
           });
